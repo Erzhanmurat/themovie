@@ -58,13 +58,13 @@ const MovieInfo = () => {
    }
    return (
      <>
-        <div className="movie-header" style={{backgroundImage: `url(/t/p/w1920_and_h800_multi_faces/${film.backdrop_path})`}}>
+        <div className="movie-header" style={{backgroundImage: `url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/${film.backdrop_path})`}}>
            <div className="background" style={{background: color}}>
               <div className="container">
                  <div className="row">
                     <div className="col-3">
                        <div className="film-img">
-                          <img src={`/t/p/w300_and_h450_face${film.poster_path}`}
+                          <img src={`https://www.themoviedb.org/t/p/w300_and_h450_face${film.poster_path}`}
                                onLoad={onImageLoad}
                                crossOrigin="anonymous"
                                alt=""/>
@@ -130,7 +130,7 @@ const MovieInfo = () => {
                             <div className="character-card" key={item.id}>
                                <div className="character-img">
                                   <Link to={`/person/${item.id}`}>
-                                     <img src={`/t/p/w440_and_h660_face${item.profile_path}`} alt=""/>
+                                     <img src={`https://www.themoviedb.org/t/p/w440_and_h660_face${item.profile_path}`} alt=""/>
                                   </Link>
                                </div>
                                <div className="character-content">

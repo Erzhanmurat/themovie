@@ -22,7 +22,6 @@ const Search = () => {
      <div className="header-search">
         <div className="container">
            <div className="row">
-
               <div className="col-3">
                  <div className="search-content">
                     <div className="nav-search">
