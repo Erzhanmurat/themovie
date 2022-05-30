@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
 import axios from "axios";
+import {useParams} from "react-router-dom";
 import Spinner from "../../components/Spinner";
 import {Link} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,6 +8,11 @@ import {faFacebookF, faInstagram, faTwitter} from '@fortawesome/free-brands-svg-
 import {faLink} from "@fortawesome/free-solid-svg-icons";
 import FastAverageColor from "fast-average-color";
 import ReactPlayer from "react-player";
+import noImage from '../../assets/images/no-image.jpeg'
+import {faList} from "@fortawesome/free-solid-svg-icons/faList";
+import {faHeart} from "@fortawesome/free-solid-svg-icons/faHeart";
+import {faBookmark} from "@fortawesome/free-solid-svg-icons/faBookmark";
+import {faStar} from "@fortawesome/free-solid-svg-icons/faStar";
 
 
 const MovieInfo = () => {
@@ -69,12 +74,43 @@ const MovieInfo = () => {
                        <div className="movie-content">
                           <div>
                              <Link to={`/movie/${film.id}`}>
-                                <h1 className="card-title">{film.title}</h1>
+                                <h1>{film.title}</h1>
                              </Link>
-                             <span>{`(${(film.release_date).split('-').reverse()})`}</span>
+                             <div className="genres">
+                                <span>{`(${(film.release_date).split(' ').reverse()})`}</span>
+                                {
+                                   film.genres.map((item) => (
+                                        <li  className="genres-list" key={item.id}>{item.name}</li>
+                                   ))
+                                }
+                             </div>
+                             <div className="custom-corner">
+                                <div className="info-rating me-3">{film.vote_average}</div>
+                                <h6 className="me-3">Пользовательский <br/>счёт</h6>
+                                <div className="custom-btn me-3">
+                                   <button>
+                                      <FontAwesomeIcon icon={faList} />
+                                   </button>
+                                </div>
+                                <div className="custom-btn me-3">
+                                   <button>
+                                      <FontAwesomeIcon icon={faHeart} />
+                                   </button>
+                                </div>
+                                <div className="custom-btn me-3">
+                                   <button>
+                                      <FontAwesomeIcon icon={faBookmark} />
+                                   </button>
+                                </div>
+                                <div className="custom-btn me-3">
+                                   <button>
+                                      <FontAwesomeIcon icon={faStar} />
+                                   </button>
+                                </div>
+                             </div>
                           </div>
                           <div className="overview">
-                             <h2>Обзор</h2>
+                             <h5>Обзор</h5>
                              <p>{film.overview}</p>
                           </div>
                        </div>
@@ -94,7 +130,7 @@ const MovieInfo = () => {
                             <div className="character-card" key={item.id}>
                                <div className="character-img">
                                   <Link to={`/person/${item.id}`}>
-                                     <img src={`https://www.themoviedb.org/t/p/w440_and_h660_face${item.profile_path}`} alt=""/>
+                                     <img src={`/t/p/w440_and_h660_face${item.profile_path}`} alt=""/>
                                   </Link>
                                </div>
                                <div className="character-content">
@@ -112,7 +148,7 @@ const MovieInfo = () => {
                        <div className="row">
                           {
                              media.map(item => (
-                               <div className="col-4">
+                               <div className="col-4" key={item.id}>
                                   {
                                      <ReactPlayer width={400} key={item.id} url={`https://www.youtube.com/watch?v=${item.key}`}/>
                                   }

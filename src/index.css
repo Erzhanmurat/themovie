@@ -2,6 +2,9 @@ a {
   color: inherit!important;
   text-decoration: none!important;
 }
+h6 {
+  margin-bottom: 20px;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -97,6 +100,7 @@ li {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
 .movie-card{
   width: 150px;
   min-width: 150px;
@@ -154,6 +158,38 @@ li {
   color: whitesmoke;
   font-weight: bold;
 }
+.info-rating {
+  width: 64px;
+  height: 64px;
+  background-color: #081c22;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: whitesmoke;
+  font-weight: bold;
+}
+.custom-btn {
+  width: 46px;
+  height: 46px;
+  background-color: rgba(3,37,65);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: whitesmoke;
+  font-weight: bold;
+}
+.custom-btn button {
+  background-color: transparent;
+  border: transparent;
+  color: white;
+}
+.custom-corner {
+  display: flex;
+  padding: 20px 0;
+  align-items: center;
+}
 .background {
   padding: 30px 0;
   color: white;
@@ -163,7 +199,13 @@ li {
   display: flex;
   padding: 30px 0;
 }
-
+.genres {
+  display: flex;
+}
+.genres-list {
+  display: inline-block;
+  padding-left: 5px;
+}
 .movie-content {
   padding-left: 40px;
 }
@@ -224,6 +266,9 @@ li {
 }
 .social-icons button {
   margin-left: 7px;
+  background-color: white;
+  border: none;
+  font-size: 30px;
 }
 .selector-wrap {
   display: flex;
@@ -285,5 +330,12 @@ li {
 .selected {
   background-color: rgba(0,0,0,0.08);
 }
+.person-img img{
+  width: 300px;
+  height: 450px;
+  border-radius: 7px;
+}
+
+
 
 

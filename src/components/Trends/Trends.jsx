@@ -31,7 +31,7 @@ const Trends = () => {
                 <div className="movie-card" key={item.id}>
                    <div className="card-img">
                       <Link to={`/movie/${item.id}`}>
-                         <img src={`https://www.themoviedb.org/t/p/w440_and_h660_face${item.poster_path}`} alt=""/>
+                         <img src={`/t/p/w440_and_h660_face${item.poster_path}`} alt=""/>
                       </Link>
                       <div className="rating">{item.vote_average}</div>
                    </div>

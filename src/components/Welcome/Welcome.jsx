@@ -5,9 +5,14 @@ import {useNavigate} from "react-router-dom";
 const Welcome = () => {
    let navigate = useNavigate()
    const [search, setSearch] = useState("")
-   const handleChange = (e) => setSearch((e.target.value))
+   const handleInput = (e) => setSearch((e.target.value))
+   const handleChange = (e) => {
+      if (e.key === 'Enter') {
+         navigate(`/browse/${search}`)
+      }
+   }
    const handleSearch = () => {
-      navigate(`/search/${search}`)
+      navigate(`/browse/${search}`)
       setSearch("")
 
    }
@@ -23,8 +28,8 @@ const Welcome = () => {
          <h3>Миллионы фильмов, сериалов и людей. Исследуйте сейчас.</h3>
       </div>
         <div className="container-lg welcome-search">
-           <input onChange={handleChange} type="text" className="search-input" placeholder="Найти фильм, сериал, персону......"/>
-           <button onClick={handleSearch} className="search-btn">Search</button>
+           <input onKeyPress={handleChange} onChange={handleInput} type="text" className="search-input" placeholder="Найти фильм, сериал, персону......"/>
+           <button onClick={handleSearch} disabled={!search.trim()} className="search-btn">Search</button>
         </div>
      </div>
    );

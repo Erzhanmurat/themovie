@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap');
+
+.not-page {
+    background: url(https://pandorafms.com/wp-content/uploads/2019/10/flexible-monitoring-software-pandorafms-slider-2.jpg) no-repeat center center fixed;
+    background-size: cover;
+    font-family: "Raleway", sans-serif;
+    background-color: #fff;
+    height: 100%;
+}
+
+.text-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-size: 9em;
+    font-weight: 700;
+    color: #82b92e;
+    text-shadow: 0.1em 0.1em 0.8em #343434;
+}
+
+.subtitle {
+    font-size: 40px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.buttons {
+    margin: 30px;
+}
+.buttons a.button {
+    font-weight: 700;
+    border: 2px solid #fff;
+    text-decoration: none;
+    padding: 15px;
+    text-transform: uppercase;
+    color: #fff;
+    border-radius: 26px;
+    transition: all 0.2s ease-in-out;
+}
+.buttons a.button:hover {
+    background-color: #82b92e;
+    color: white;
+    transition: all 0.2s ease-in-out;
+    border: none;
+}
+
+
