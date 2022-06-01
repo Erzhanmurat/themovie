@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {IMAGES_BASE, SERVER_API} from "../../constants/Constants";
 
 const Trends = () => {
    const [trendMovie, setTrendMovie] = useState([])
    const [time, setTime] = useState("day")
    const [active,setActive] = useState(false)
    useEffect(() => {
-      axios(`https://api.themoviedb.org/3/trending/movie/${time}?&api_key=0507039a9e671aca598931b85b443a55&language=ru`)
+      axios(`${SERVER_API}trending/movie/${time}?&api_key=${process.env.REACT_APP_APIKEY}&language=ru`)
         .then(({data}) => setTrendMovie(data.results))
    },[time])
    const formatDate = (date) => {
@@ -31,7 +32,7 @@ const Trends = () => {
                 <div className="movie-card" key={item.id}>
                    <div className="card-img">
                       <Link to={`/movie/${item.id}`}>
-                         <img src={`https://www.themoviedb.org/t/p/w440_and_h660_face${item.poster_path}`} alt=""/>
+                         <img src={`${IMAGES_BASE}/w440_and_h660_face${item.poster_path}`} alt=""/>
                       </Link>
                       <div className="rating">{item.vote_average}</div>
                    </div>

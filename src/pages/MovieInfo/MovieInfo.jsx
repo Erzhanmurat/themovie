@@ -6,43 +6,41 @@ import {Link} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faFacebookF, faInstagram, faTwitter} from '@fortawesome/free-brands-svg-icons'
 import {faLink} from "@fortawesome/free-solid-svg-icons";
-import FastAverageColor from "fast-average-color";
 import ReactPlayer from "react-player";
-import noImage from '../../assets/images/no-image.jpeg'
 import {faList} from "@fortawesome/free-solid-svg-icons/faList";
 import {faHeart} from "@fortawesome/free-solid-svg-icons/faHeart";
 import {faBookmark} from "@fortawesome/free-solid-svg-icons/faBookmark";
 import {faStar} from "@fortawesome/free-solid-svg-icons/faStar";
+import {IMAGES_BASE, SERVER_API} from "../../constants/Constants";
 
-
+const API_KEY = process.env.REACT_APP_APIKEY
 const MovieInfo = () => {
    const [film, setFilm] = useState({})
    const [credits, setCredits] = useState({})
    const [recommendations, setRecommendations] = useState([])
    const [media, setMedia] = useState({})
-   const [color, setColor] = useState('')
    const {id} = useParams()
    const [filmLoader, setFilmLoader] = useState(true);
    const [creditLoader, setCreditLoader] = useState(true);
    const [recommendationsLoader, setRecommendationsLoader] = useState(true)
    const [mediaLoader, setMediaLoader] = useState(true)
    useEffect(() => {
-      axios(`https://api.themoviedb.org/3/movie/${id}?&sort_by=popularity.desc&api_key=0507039a9e671aca598931b85b443a55&language=ru`)
+      axios(`${SERVER_API}movie/${id}?&sort_by=popularity.desc&api_key=${API_KEY}&language=ru`)
         .then(({data}) => {
            setFilm(data)
            setFilmLoader(false)
         })
-      axios(`https://api.themoviedb.org/3/movie/${id}/credits?&sort_by=popularity.desc&api_key=0507039a9e671aca598931b85b443a55&language=ru`)
+      axios(`${SERVER_API}movie/${id}/credits?&sort_by=popularity.desc&api_key=${API_KEY}&language=ru`)
         .then(({data}) => {
            setCredits(data.cast)
            setCreditLoader(false)
         })
-      axios(`https://api.themoviedb.org/3/movie/${id}/recommendations?&sort_by=popularity.desc&api_key=0507039a9e671aca598931b85b443a55&language=ru`)
+      axios(`${SERVER_API}movie/${id}/recommendations?&sort_by=popularity.desc&api_key=${API_KEY}&language=ru`)
         .then(({data}) => {
            setRecommendations(data.results)
            setRecommendationsLoader(false)
         })
-      axios(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=0507039a9e671aca598931b85b443a55&language=ru`)
+      axios(`${SERVER_API}movie/${id}/videos?api_key=${API_KEY}&language=ru`)
         .then(({data}) => {
            setMedia(data.results)
            setMediaLoader(false)
@@ -51,23 +49,15 @@ const MovieInfo = () => {
    if (filmLoader || creditLoader || creditLoader || recommendationsLoader || mediaLoader) {
       return <Spinner />
    }
-   function onImageLoad(e) {
-      new FastAverageColor().getColorAsync(e.target).then((imgColor) => {
-         setColor(`rgba(${imgColor.value.slice(0, 3).join(',')},0.9)`)
-      })
-   }
    return (
      <>
-        <div className="movie-header" style={{backgroundImage: `url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/${film.backdrop_path})`}}>
-           <div className="background" style={{background: color}}>
+        <div className="movie-header" style={{backgroundImage: `url(${IMAGES_BASE}/w1920_and_h800_multi_faces/${film.backdrop_path})`}}>
+           <div className="background" style={{background: 'rgba(0, 0, 0, 0.8)'}}>
               <div className="container">
                  <div className="row">
                     <div className="col-3">
                        <div className="film-img">
-                          <img src={`https://www.themoviedb.org/t/p/w300_and_h450_face${film.poster_path}`}
-                               onLoad={onImageLoad}
-                               crossOrigin="anonymous"
-                               alt=""/>
+                          <img src={`${IMAGES_BASE}/w300_and_h450_face${film.poster_path}`} alt=""/>
                        </div>
                     </div>
                     <div className="col-9">
@@ -130,7 +120,7 @@ const MovieInfo = () => {
                             <div className="character-card" key={item.id}>
                                <div className="character-img">
                                   <Link to={`/person/${item.id}`}>
-                                     <img src={`https://www.themoviedb.org/t/p/w440_and_h660_face${item.profile_path}`} alt=""/>
+                                     <img src={`${IMAGES_BASE}/w440_and_h660_face${item.profile_path}`} alt=""/>
                                   </Link>
                                </div>
                                <div className="character-content">
@@ -166,7 +156,7 @@ const MovieInfo = () => {
                             <div className="recommendation-card" key={item.id}>
                                <div className="recommendation-img">
                                   <Link to={`/movie/${item.id}`}>
-                                     <img src={`https://www.themoviedb.org/t/p/w500_and_h282_face${item.backdrop_path}`} alt=""/>
+                                     <img src={`${IMAGES_BASE}/w500_and_h282_face${item.backdrop_path}`} alt=""/>
                                   </Link>
                                </div>
                                <div className="recommendation-content">

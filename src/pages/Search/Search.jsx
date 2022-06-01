@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {useParams, Link} from "react-router-dom";
 import Spinner from "../../components/Spinner";
+import {IMAGES_BASE, SERVER_API} from "../../constants/Constants";
 
 
 const Search = () => {
@@ -9,7 +10,7 @@ const Search = () => {
    const [searchLoader, setSearchLoader] = useState(true)
    const {id} = useParams()
    useEffect(() => {
-      axios(`https://api.themoviedb.org/3/search/multi?&query=${id}&api_key=0507039a9e671aca598931b85b443a55&language=ru-RUS`)
+      axios(`${SERVER_API}search/multi?&query=${id}&api_key=0507039a9e671aca598931b85b443a55&language=ru-RUS`)
         .then(({data}) => {
            setSearch(data)
            setSearchLoader(false)
@@ -43,7 +44,7 @@ const Search = () => {
                       <div className="col-2" key={item.id}>
                       <Link to={`/movie/${item.id}`} key={item.id}>
                                <img style={{width:"100%"}}
-                                    src={`/t/p/w500/${item.poster_path}`} alt=""/>
+                                    src={`${IMAGES_BASE}/w500/${item.poster_path}`} alt=""/>
                          <div className="card-content">
                                <h5 className="card-title">{item.title}</h5>
                          </div>

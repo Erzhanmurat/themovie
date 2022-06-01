@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useNavigate} from "react-router-dom";
+import {IMAGES_BASE} from "../../constants/Constants";
 
 
 const Welcome = () => {
@@ -18,7 +19,7 @@ const Welcome = () => {
    }
    return (
      <div style= {{
-        backgroundImage: `linear-gradient(to right, rgba(3,37,65, 0.8) 0%, rgba(3,37,65, 0) 100%),url("https://www.themoviedb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,032541,01b4e4)/9ZyAUZrfccsjtDwYgc7yvOBnqM9.jpg")`,
+        backgroundImage: `linear-gradient(to right, rgba(3,37,65, 0.8) 0%, rgba(3,37,65, 0) 100%),url("${IMAGES_BASE}/w1920_and_h600_multi_faces_filter(duotone,032541,01b4e4)/9ZyAUZrfccsjtDwYgc7yvOBnqM9.jpg")`,
         backgroundPosition: "center top",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat"

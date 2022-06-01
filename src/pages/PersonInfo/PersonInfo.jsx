@@ -4,15 +4,17 @@ import {Link} from "react-router-dom";
 import {useParams} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faInstagram, faTwitter} from "@fortawesome/free-brands-svg-icons";
+import {IMAGES_BASE, SERVER_API} from "../../constants/Constants";
 
+const API_KEY = process.env.REACT_APP_APIKEY
 const PersonInfo = () => {
    const [person, setPerson] = useState({})
    const [movieCredits, setMovieCredits] = useState([])
    const {id} = useParams()
    useEffect(() => {
-      axios(`https://api.themoviedb.org/3/person/${id}?&api_key=0507039a9e671aca598931b85b443a55&language=ru`)
+      axios(`${SERVER_API}person/${id}?&api_key=${API_KEY}&language=ru`)
         .then(({data}) => setPerson(data))
-      axios(`https://api.themoviedb.org/3/person/${id}/movie_credits?&api_key=0507039a9e671aca598931b85b443a55&language=ru`)
+      axios(`${SERVER_API}person/${id}/movie_credits?&api_key=${API_KEY}&language=ru`)
         .then(({data}) => setMovieCredits(data.cast))
    })
    return (
@@ -20,7 +22,7 @@ const PersonInfo = () => {
            <div className="row mt-4">
              <div className="col-3">
                 <div className="person-img">
-                   <img src={`/t/p/w600_and_h900_bestv2/${person.profile_path}`} alt=""/>
+                   <img src={`${IMAGES_BASE}/w600_and_h900_bestv2/${person.profile_path}`} alt=""/>
                 </div>
                 <div className="social-icons">
                    <button>
@@ -51,7 +53,7 @@ const PersonInfo = () => {
                          <Link key={item.id} to={`/movie/${item.id}`}>
                             <div className="movie-card">
                                <div className="card-img">
-                                  <img src={`https://image.tmdb.org/t/p/w440_and_h660_face${item.poster_path}`} alt=""/>
+                                  <img src={`${IMAGES_BASE}/w440_and_h660_face${item.poster_path}`} alt=""/>
                                </div>
                                <h5 className="card-title">{item.title}</h5>
                             </div>
