@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faBell, faMagnifyingGlass, faPlus} from '@fortawesome/free-solid-svg-icons'
+import Logo from '../../assets/images/logo.png'
 
 const Header = () => {
    return (
@@ -11,7 +12,7 @@ const Header = () => {
               <div className="col-6">
                  <div className="item container-lg">
                     <div className="logo-img">
-                       <Link to="/"><img src="https://kinogo.biz/templates/Kinogo/images/logo.png" alt=""/></Link>
+                       <Link to="/"><img src={Logo} alt="logo"/></Link>
                     </div>
                     <div className="navbar">
                        <Link to="/"><li>Фильмы</li></Link>

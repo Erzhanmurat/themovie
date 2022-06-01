@@ -2,6 +2,7 @@ import React from 'react';
 import Welcome from "../../components/Welcome";
 import Trends from "../../components/Trends";
 import Popular from "../../components/Popular";
+import Footer from "../../components/Footer";
 
 
 const Homepage = () => {
@@ -10,6 +11,7 @@ const Homepage = () => {
         <Welcome />
         <Popular />
         <Trends />
+        <Footer />
      </div>
    );
 };

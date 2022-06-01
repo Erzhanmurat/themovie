@@ -5,6 +5,9 @@ a {
 h6 {
   margin-bottom: 20px;
 }
+p {
+  margin-bottom: 0;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -18,6 +21,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.logo-img img{
+  width: 80%;
+}
 li {
   list-style: none;
 }
@@ -30,7 +36,7 @@ li {
 }
 .navbar li {
   color: whitesmoke;
-  margin-left: 30px;
+  margin-right: 25px;
   justify-content: inherit;
   font-weight: 600;
 }
@@ -282,7 +288,7 @@ li {
   align-content: center;
   border: 1px solid rgba(3,37,65, 1);
   border-radius: 30px;
-  height: 30px
+  height: 30px;
 }
 .selector-btn {
   display: flex;

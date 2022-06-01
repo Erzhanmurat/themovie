@@ -22,8 +22,16 @@ const Trends = () => {
         <div className="selector-wrap">
            <h1>В тренде</h1>
            <div className="selector">
-              <button className={active?"selector-btn active":"selector-btn"} onClick={() => setActive(!active) || setTime('day')}>Сегодня</button>
-              <button className={!active?"selector-btn active":"selector-btn"} onClick={() => setActive(!active) || setTime('week')}>На этой неделе</button>
+              <button
+                className={active?"selector-btn active":"selector-btn"}
+                onClick={() => setActive(!active) || setTime('day')}
+              >Сегодня
+              </button>
+              <button
+                className={!active?"selector-btn active":"selector-btn"}
+                onClick={() => setActive(!active) || setTime('week')}
+              >На этой неделе
+              </button>
            </div>
         </div>
         <div className="scroller">

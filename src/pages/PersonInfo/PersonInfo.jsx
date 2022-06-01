@@ -5,6 +5,7 @@ import {useParams} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faInstagram, faTwitter} from "@fortawesome/free-brands-svg-icons";
 import {IMAGES_BASE, SERVER_API} from "../../constants/Constants";
+import '../../../src/assets/images/no-image.jpeg'
 
 const API_KEY = process.env.REACT_APP_APIKEY
 const PersonInfo = () => {

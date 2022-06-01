@@ -12,6 +12,8 @@ import {faHeart} from "@fortawesome/free-solid-svg-icons/faHeart";
 import {faBookmark} from "@fortawesome/free-solid-svg-icons/faBookmark";
 import {faStar} from "@fortawesome/free-solid-svg-icons/faStar";
 import {IMAGES_BASE, SERVER_API} from "../../constants/Constants";
+import NoImage from '../../assets/images/no-image.jpeg'
+import NoVideo from '../../assets/images/no_video_available.png'
 
 const API_KEY = process.env.REACT_APP_APIKEY
 const MovieInfo = () => {
@@ -57,7 +59,7 @@ const MovieInfo = () => {
                  <div className="row">
                     <div className="col-3">
                        <div className="film-img">
-                          <img src={`${IMAGES_BASE}/w300_and_h450_face${film.poster_path}`} alt=""/>
+                          <img src={film.poster_path? `${IMAGES_BASE}/w300_and_h450_face${film.poster_path}`: NoVideo} alt=""/>
                        </div>
                     </div>
                     <div className="col-9">
@@ -120,7 +122,7 @@ const MovieInfo = () => {
                             <div className="character-card" key={item.id}>
                                <div className="character-img">
                                   <Link to={`/person/${item.id}`}>
-                                     <img src={`${IMAGES_BASE}/w440_and_h660_face${item.profile_path}`} alt=""/>
+                                     <img src={item.profile_path? `${IMAGES_BASE}/w440_and_h660_face${item.profile_path}`: NoImage} alt=""/>
                                   </Link>
                                </div>
                                <div className="character-content">

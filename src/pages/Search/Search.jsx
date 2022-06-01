@@ -3,6 +3,7 @@ import axios from "axios";
 import {useParams, Link} from "react-router-dom";
 import Spinner from "../../components/Spinner";
 import {IMAGES_BASE, SERVER_API} from "../../constants/Constants";
+import NoVideo from '../../assets/images/no_video_available.png'
 
 
 const Search = () => {
@@ -37,14 +38,14 @@ const Search = () => {
                     </div>
                  </div>
               </div>
-              <div className="col-9">
+              <div className="col-9 mt-lg-4">
                  <div className="row">
                  {
                     search?.results?.length ? search?.results?.map(item => (
                       <div className="col-2" key={item.id}>
                       <Link to={`/movie/${item.id}`} key={item.id}>
                                <img style={{width:"100%"}}
-                                    src={`${IMAGES_BASE}/w500/${item.poster_path}`} alt=""/>
+                                    src={item.poster_path? `${IMAGES_BASE}/w500/${item.poster_path}`: NoVideo} alt=""/>
                          <div className="card-content">
                                <h5 className="card-title">{item.title}</h5>
                          </div>
